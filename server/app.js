@@ -12,13 +12,13 @@ app.use(express.json());
 app.use(cors({ origin: "*", credentials: true }));
 app.use(express.static('../client'));
 
-app.get('/', (req, res, next) => {
+app.get('/', (req, res) => {
   res.render('index.html');
 });
 
 app.use('/', require('./routes'));
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error(err);
   res.status(500).send('Error handler catches server error');
 });
