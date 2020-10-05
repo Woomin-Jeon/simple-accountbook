@@ -1,5 +1,20 @@
 const pool = require('./index');
 
+const getBreakdowns = (userId) => new Promise((resolve, reject) => {
+  pool.getConnection((error, connection) => {
+    const query = `SELECT breakdown.id, breakdown.amount, breakdown.content, breakdown.method, breakdown.come, date, category.name FROM breakdown LEFT JOIN category ON breakdown.categoryId = category.id WHERE userId=?`;
+    connection.query(query, [userId], (error, data) => {
+      if (error) {
+        reject(error);
+      }
+
+      resolve(data);
+    });
+
+    connection.release();
+  });
+});
+
 const addBreakdown = ({
   id, amount, content, method, come, date, userId, categoryId,
 }) => new Promise((resolve, reject) => {
@@ -17,4 +32,4 @@ const addBreakdown = ({
   });
 });
 
-module.exports = { addBreakdown };
+module.exports = { getBreakdowns, addBreakdown };
