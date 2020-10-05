@@ -1,4 +1,6 @@
-const { getBreakdowns, addBreakdown, deleteBreakdown } = require('./breakdown');
+const {
+  getBreakdowns, addBreakdown, deleteBreakdown, updateBreakdown,
+} = require('./breakdown');
 
 const { getRandomString } = require('../utils/generator');
 
@@ -32,6 +34,25 @@ describe('breakdown', () => {
       expect(result).toBe(true);
 
       breakdownId = parameters.id;
+    });
+  });
+
+  describe('updateBreakdown', () => {
+    it('returns true', async () => {
+      const updatedData = {
+        id: breakdownId,
+        amount: 20_000,
+        content: '친구들과 밥 한끼',
+        method: '카드',
+        come: '지출',
+        date: '2020-10-05',
+        userId: 'test',
+        categoryId: 5,
+      };
+
+      const result = await updateBreakdown(updatedData);
+
+      expect(result).toBe(true);
     });
   });
 
