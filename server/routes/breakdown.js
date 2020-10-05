@@ -1,0 +1,31 @@
+const express = require('express');
+
+const router = express.Router();
+
+const passport = require('../utils/passport');
+
+const { addBreakdown } = require('../models/breakdown');
+
+const { getRandomString, getCurrentDate } = require('../utils/generator');
+
+router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  const { amount, content, method, come, categoryId } = req.body;
+  const { id: userId } = req.user;
+  const id = getRandomString();
+  const date = getCurrentDate();
+
+  const parameters = {
+    id, amount, content, method, come, date, userId, categoryId,
+  };
+
+  const state = await addBreakdown(parameters);
+
+  if (state === false) {
+    res.status(500).send('Server Error');
+    return;
+  }
+
+  res.status(200).send('Success');
+});
+
+module.exports = router;
