@@ -1,33 +1,35 @@
-const { getRandomString, getCurrentDate } = require('../utils/generator');
+const { getRandomString } = require('../utils/generator');
 
 const model = require('../models/breakdown');
 
 const getBreakdowns = async (req, res) => {
   const { id: userId } = req.user;
 
-  const breakdowns = await model.getBreakdowns(userId);
-
-  res.status(200).json({ breakdowns });
+  try {
+    const breakdowns = await model.getBreakdowns(userId);
+    res.status(200).json({ breakdowns });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
 };
 
 const addBreakdown = async (req, res) => {
-  const { amount, content, method, come, categoryId } = req.body;
+  const { amount, content, method, come, categoryId, date } = req.body;
   const { id: userId } = req.user;
   const id = getRandomString();
-  const date = getCurrentDate();
 
   const parameters = {
     id, amount, content, method, come, date, userId, categoryId,
   };
 
-  const state = await model.addBreakdown(parameters);
-
-  if (state === false) {
+  try {
+    await model.addBreakdown(parameters);
+    res.status(200).json({ breakdownId: id });
+  } catch (error) {
+    console.error(error);
     res.status(500).send('Server Error');
-    return;
   }
-
-  res.status(200).json({ breakdownId: id });
 };
 
 const updateBreakdown = async (req, res) => {
@@ -40,18 +42,26 @@ const updateBreakdown = async (req, res) => {
     breakdownId, amount, content, method, come, date, userId, categoryId,
   };
 
-  await model.updateBreakdown(parameters);
-
-  res.status(200).send('Success');
+  try {
+    await model.updateBreakdown(parameters);
+    res.status(200).send('Success');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
 };
 
 const deleteBreakdown = async (req, res) => {
   const { id: userId } = req.user;
   const { breakdownId } = req.body;
 
-  await model.deleteBreakdown(userId, breakdownId);
-
-  res.status(200).send('Success');
+  try {
+    await model.deleteBreakdown(userId, breakdownId);
+    res.status(200).send('Success');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
 };
 
 module.exports = { getBreakdowns, addBreakdown, updateBreakdown, deleteBreakdown };

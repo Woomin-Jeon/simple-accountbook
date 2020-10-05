@@ -20,7 +20,7 @@ const getBreakdowns = (userId) => new Promise((resolve, reject) => {
 
     connection.release();
   });
-}).catch(error => console.error(error));
+});
 
 const addBreakdown = ({
   id, amount, content, method, come, date, userId, categoryId,
