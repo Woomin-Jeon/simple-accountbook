@@ -7,6 +7,8 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 describe('breakdown', () => {
+  let breakdownId;
+
   describe('GET /breakdown', () => {
     describe('with valid JWT token', () => {
       it('responses breakdowns by user', async () => {
@@ -40,10 +42,12 @@ describe('breakdown', () => {
         const user = { id: 'test', pw: 'test' };
         const validToken = jwt.sign(user, process.env.JWT_SECRET);
 
-        await request(app)
+        const response = await request(app)
           .post('/breakdown')
           .set('Authorization', `Bearer ${validToken}`)
           .expect(200);
+
+        breakdownId = response.body.breakdownId;
       });
     });
 
@@ -56,6 +60,21 @@ describe('breakdown', () => {
           .post('/breakdown')
           .set('Authorization', `Bearer ${invalidToken}`)
           .expect(401);
+      });
+    });
+  });
+
+  describe('DELETE /breakdown', () => {
+    describe('with valid JWT token', () => {
+      it('responses 200', async () => {
+        const user = { id: 'test', pw: 'test' };
+        const validToken = jwt.sign(user, process.env.JWT_SECRET);
+
+        await request(app)
+          .delete('/breakdown')
+          .set('Authorization', `Bearer ${validToken}`)
+          .send({ breakdownId })
+          .expect(200);
       });
     });
   });
