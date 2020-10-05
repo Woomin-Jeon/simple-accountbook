@@ -77,5 +77,18 @@ describe('breakdown', () => {
           .expect(200);
       });
     });
+
+    describe('with invalid JWT token', () => {
+      it('responses 401', async () => {
+        const user = { id: 'invalid_id', pw: 'invalid_pw' };
+        const validToken = jwt.sign(user, process.env.JWT_SECRET);
+
+        await request(app)
+          .delete('/breakdown')
+          .set('Authorization', `Bearer ${validToken}`)
+          .send({ breakdownId })
+          .expect(401);
+      });
+    });
   });
 });
