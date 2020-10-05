@@ -1,5 +1,5 @@
 const {
-  getBreakdowns, addBreakdown, deleteBreakdown, updateBreakdown,
+  getBreakdowns, getBreakdownsByMonth, addBreakdown, deleteBreakdown, updateBreakdown,
 } = require('./breakdown');
 
 describe('breakdown', () => {
@@ -33,6 +33,15 @@ describe('breakdown', () => {
   describe('getBreakdowns', () => {
     it('returns breakdowns', async () => {
       const breakdowns = await getBreakdowns(userId);
+
+      expect(breakdowns.length > 0).toBe(true);
+    });
+  });
+
+  describe('getBreakdownsByMonth', () => {
+    it('returns breakdowns by month', async () => {
+      const month = 10;
+      const breakdowns = await getBreakdownsByMonth(userId, month);
 
       expect(breakdowns.length > 0).toBe(true);
     });

@@ -78,4 +78,26 @@ const deleteBreakdown = (userId, breakdownId) => new Promise((resolve, reject) =
   });
 });
 
-module.exports = { getBreakdowns, addBreakdown, updateBreakdown, deleteBreakdown };
+const getBreakdownsByMonth = (userId, month) => new Promise((resolve, reject) => {
+  pool.getConnection((error, connection) => {
+    const query = `
+      SELECT
+      breakdown.id, amount, content, method, breakdown.come, date, category.name as category
+      FROM breakdown
+      LEFT JOIN category ON breakdown.categoryId = category.id
+      WHERE userId=? and month(date)=?
+    `;
+    const params = [userId, month];
+
+    connection.query(query, params, (error, data) => {
+      checkError(error, reject);
+      resolve(data);
+    });
+
+    connection.release();
+  });
+});
+
+module.exports = {
+  getBreakdowns, addBreakdown, updateBreakdown, deleteBreakdown, getBreakdownsByMonth,
+};
