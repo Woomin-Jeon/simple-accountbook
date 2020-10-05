@@ -36,6 +36,31 @@ describe('breakdown', () => {
     });
   });
 
+  describe('GET /breakdown/month', () => {
+    describe('with valid JWT token', () => {
+      it('responses breakdowns by user and month', async () => {
+        const validToken = jwt.sign(validUser, process.env.JWT_SECRET);
+
+        const response = await request(app)
+          .get('/breakdown/month/10')
+          .set('Authorization', `Bearer ${validToken}`);
+
+        expect(response.body.breakdowns).toBeDefined();
+      });
+    });
+
+    describe('with invalid JWT token', () => {
+      it('responses 401', async () => {
+        const validToken = jwt.sign(invalidUser, process.env.JWT_SECRET);
+
+        await request(app)
+          .get('/breakdown/month/10')
+          .set('Authorization', `Bearer ${validToken}`)
+          .expect(401);
+      });
+    });
+  });
+
   describe('POST /breakdown', () => {
     describe('with valid JWT token', () => {
       it('responses 200', async () => {

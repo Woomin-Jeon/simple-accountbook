@@ -64,4 +64,19 @@ const deleteBreakdown = async (req, res) => {
   }
 };
 
-module.exports = { getBreakdowns, addBreakdown, updateBreakdown, deleteBreakdown };
+const getBreakdownsByMonth = async (req, res) => {
+  const { id: userId } = req.user;
+  const { month } = req.params;
+
+  try {
+    const breakdowns = await model.getBreakdownsByMonth(userId, month);
+    res.status(200).json({ breakdowns });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
+};
+
+module.exports = {
+  getBreakdowns, addBreakdown, updateBreakdown, deleteBreakdown, getBreakdownsByMonth,
+};
