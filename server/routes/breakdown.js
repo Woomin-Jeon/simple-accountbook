@@ -4,9 +4,17 @@ const router = express.Router();
 
 const passport = require('../utils/passport');
 
-const { addBreakdown } = require('../models/breakdown');
+const { getBreakdowns, addBreakdown } = require('../models/breakdown');
 
 const { getRandomString, getCurrentDate } = require('../utils/generator');
+
+router.get('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  const { id: userId } = req.user;
+
+  const breakdowns = await getBreakdowns(userId);
+
+  res.status(200).json({ breakdowns });
+});
 
 router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
   const { amount, content, method, come, categoryId } = req.body;
