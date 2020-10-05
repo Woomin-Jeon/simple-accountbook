@@ -4,7 +4,9 @@ const router = express.Router();
 
 const passport = require('../utils/passport');
 
-const { getBreakdowns, addBreakdown, deleteBreakdown } = require('../models/breakdown');
+const {
+  getBreakdowns, addBreakdown, updateBreakdown, deleteBreakdown,
+} = require('../models/breakdown');
 
 const { getRandomString, getCurrentDate } = require('../utils/generator');
 
@@ -36,13 +38,28 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
   res.status(200).json({ breakdownId: id });
 });
 
+router.patch('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  const { id: userId } = req.user;
+  const {
+    breakdownId, amount, content, method, come, date, categoryId,
+  } = req.body;
+
+  const parameters = {
+    breakdownId, amount, content, method, come, date, userId, categoryId,
+  };
+
+  await updateBreakdown(parameters);
+
+  res.status(200).send('Success');
+});
+
 router.delete('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
   const { id: userId } = req.user;
   const { breakdownId } = req.body;
 
   await deleteBreakdown(userId, breakdownId);
 
-  res.send();
+  res.status(200).send('Success');
 });
 
 module.exports = router;
