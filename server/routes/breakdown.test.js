@@ -7,13 +7,14 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 describe('breakdown', () => {
+  const validUser = { id: 'boost', pw: 'camp' };
+  const invalidUser = { id: 'invalid_id', pw: 'invalid_pw' };
   let breakdownId;
 
   describe('GET /breakdown', () => {
     describe('with valid JWT token', () => {
       it('responses breakdowns by user', async () => {
-        const user = { id: 'boost', pw: 'camp' };
-        const validToken = jwt.sign(user, process.env.JWT_SECRET);
+        const validToken = jwt.sign(validUser, process.env.JWT_SECRET);
 
         const response = await request(app)
           .get('/breakdown')
@@ -25,12 +26,11 @@ describe('breakdown', () => {
 
     describe('with invalid JWT token', () => {
       it('responses 401', async () => {
-        const user = { id: 'invalid_id', pw: 'invalid_pw' };
-        const validToken = jwt.sign(user, process.env.JWT_SECRET);
+        const invalidToken = jwt.sign(invalidUser, process.env.JWT_SECRET);
 
         await request(app)
           .get('/breakdown')
-          .set('Authorization', `Bearer ${validToken}`)
+          .set('Authorization', `Bearer ${invalidToken}`)
           .expect(401);
       });
     });
@@ -39,8 +39,7 @@ describe('breakdown', () => {
   describe('POST /breakdown', () => {
     describe('with valid JWT token', () => {
       it('responses 200', async () => {
-        const user = { id: 'test', pw: 'test' };
-        const validToken = jwt.sign(user, process.env.JWT_SECRET);
+        const validToken = jwt.sign(validUser, process.env.JWT_SECRET);
 
         const response = await request(app)
           .post('/breakdown')
@@ -53,8 +52,7 @@ describe('breakdown', () => {
 
     describe('with invalid JWT token', () => {
       it('responses 401', async () => {
-        const user = { id: 'invalid_id', pw: 'invalid_pw' };
-        const invalidToken = jwt.sign(user, process.env.JWT_SECRET);
+        const invalidToken = jwt.sign(invalidUser, process.env.JWT_SECRET);
 
         await request(app)
           .post('/breakdown')
@@ -67,8 +65,7 @@ describe('breakdown', () => {
   describe('PATCH /breakdown', () => {
     describe('with valid JWT token', () => {
       it('responses 200', async () => {
-        const user = { id: 'test', pw: 'test' };
-        const validToken = jwt.sign(user, process.env.JWT_SECRET);
+        const validToken = jwt.sign(validUser, process.env.JWT_SECRET);
 
         await request(app)
           .patch('/breakdown')
@@ -79,12 +76,11 @@ describe('breakdown', () => {
 
     describe('with invalid JWT token', () => {
       it('responses 401', async () => {
-        const user = { id: 'invalid_id', pw: 'invalid_pw' };
-        const validToken = jwt.sign(user, process.env.JWT_SECRET);
+        const invalidToken = jwt.sign(invalidUser, process.env.JWT_SECRET);
 
         await request(app)
           .patch('/breakdown')
-          .set('Authorization', `Bearer ${validToken}`)
+          .set('Authorization', `Bearer ${invalidToken}`)
           .expect(401);
       });
     });
@@ -93,8 +89,7 @@ describe('breakdown', () => {
   describe('DELETE /breakdown', () => {
     describe('with valid JWT token', () => {
       it('responses 200', async () => {
-        const user = { id: 'test', pw: 'test' };
-        const validToken = jwt.sign(user, process.env.JWT_SECRET);
+        const validToken = jwt.sign(validUser, process.env.JWT_SECRET);
 
         await request(app)
           .delete('/breakdown')
@@ -106,12 +101,11 @@ describe('breakdown', () => {
 
     describe('with invalid JWT token', () => {
       it('responses 401', async () => {
-        const user = { id: 'invalid_id', pw: 'invalid_pw' };
-        const validToken = jwt.sign(user, process.env.JWT_SECRET);
+        const invalidToken = jwt.sign(invalidUser, process.env.JWT_SECRET);
 
         await request(app)
           .delete('/breakdown')
-          .set('Authorization', `Bearer ${validToken}`)
+          .set('Authorization', `Bearer ${invalidToken}`)
           .send({ breakdownId })
           .expect(401);
       });
