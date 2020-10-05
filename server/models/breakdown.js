@@ -32,4 +32,19 @@ const addBreakdown = ({
   });
 });
 
-module.exports = { getBreakdowns, addBreakdown };
+const deleteBreakdown = (userId, breakdownId) => new Promise((resolve, reject) => {
+  pool.getConnection((error, connection) => {
+    const query = `DELETE FROM breakdown WHERE userId=? and id=?`;
+    connection.query(query, [userId, breakdownId], (error) => {
+      if (error) {
+        reject(error);
+      }
+
+      resolve(true);
+    });
+
+    connection.release();
+  });
+});
+
+module.exports = { getBreakdowns, addBreakdown, deleteBreakdown };

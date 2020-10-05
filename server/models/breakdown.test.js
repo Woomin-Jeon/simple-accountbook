@@ -1,8 +1,10 @@
-const { getBreakdowns, addBreakdown } = require('./breakdown');
+const { getBreakdowns, addBreakdown, deleteBreakdown } = require('./breakdown');
 
 const { getRandomString } = require('../utils/generator');
 
 describe('breakdown', () => {
+  let breakdownId;
+
   describe('getBreakdowns', () => {
     it('returns breakdowns', async () => {
       const userId = 'boost';
@@ -26,6 +28,17 @@ describe('breakdown', () => {
       };
 
       const result = await addBreakdown(parameters);
+
+      expect(result).toBe(true);
+
+      breakdownId = parameters.id;
+    });
+  });
+
+  describe('deleteBreakdown', () => {
+    it('returns true', async () => {
+      const userId = 'test';
+      const result = await deleteBreakdown(userId, breakdownId);
 
       expect(result).toBe(true);
     });
