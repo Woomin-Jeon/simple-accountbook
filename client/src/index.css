@@ -32,3 +32,34 @@
   outline: none;
   cursor: pointer;
 }
+
+.tab {
+  justify-content: center;
+}
+
+.tab > div {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 5px 0px #979797;
+  margin-left: 0.2rem;
+  outline: none;
+}
+
+.tab > div > button {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0 7rem;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.tab_selected {
+  background: white;
+  border-radius: 0.8rem;
+}
