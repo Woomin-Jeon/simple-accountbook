@@ -1,2 +1,5 @@
+import Header from './components/Header.js';
+
 const app = document.querySelector('#app');
-app.innerHTML = `<div>Hello</div>`;
+
+app.appendChild(new Header().node);

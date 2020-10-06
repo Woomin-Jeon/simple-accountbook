@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.header {
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  background: #19b9ac;
+  color: white;
+  padding: 1rem;
+}
