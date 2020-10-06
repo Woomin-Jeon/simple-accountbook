@@ -1,4 +1,4 @@
-import { store, actions, subscriber } from '../store.js';
+import { store, actions, dispatch, subscriber } from '../store.js';
 
 export default function MonthToggle() {
   this.node = document.createElement('div');
@@ -15,10 +15,10 @@ export default function MonthToggle() {
     const prevMonthButton = this.node.querySelector('#month_toggle_prev');
     const nextMonthButton = this.node.querySelector('#month_toggle_next');
     prevMonthButton.addEventListener('click', () => {
-      actions.setMonth('prev');
+      dispatch('state', () => actions.setMonth('prev'));
     });
     nextMonthButton.addEventListener('click', () => {
-      actions.setMonth('next');
+      dispatch('state', () => actions.setMonth('next'));
     });
   };
 

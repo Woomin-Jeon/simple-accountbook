@@ -8,14 +8,18 @@ export const store = {
   },
 };
 
+export const dispatch = (key, action) => {
+  store[key] = action();
+
+  updateRendering();
+};
+
 export const actions = {
   setMonth(direction) {
     const { state } = store;
     const month = direction === 'next' ? state.month + 1 : state.month - 1;
 
-    store.state = { ...state, month };
-
-    updateRendering();
+    return { ...state, month };
   },
 };
 
