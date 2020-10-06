@@ -2,6 +2,8 @@ const mysql = require('mysql');
 
 require('dotenv').config();
 
+const { checkError } = require('./util');
+
 const pool = mysql.createPool({
   host: process.env.DB_HOST_IP,
   user: process.env.DB_ID,
@@ -10,4 +12,15 @@ const pool = mysql.createPool({
   connectionLimit: 20,
 });
 
-module.exports = pool;
+const queryPromise = (query, params, callback) => new Promise((resolve, reject) => {
+  pool.getConnection((error, connection) => {
+    connection.query(query, params, (error, data) => {
+      checkError(error, reject);
+      callback(data, resolve);
+    });
+
+    connection.release();
+  });
+});
+
+module.exports = queryPromise;
