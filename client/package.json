@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "start": "webpack-dev-server",
     "build": "webpack",
     "lint": "eslint ."
@@ -18,6 +19,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "eslint": "^7.10.0",
+    "jest": "^26.5.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
