@@ -41,3 +41,15 @@ describe('setType', () => {
     });
   });
 });
+
+describe('setDate', () => {
+  beforeEach(() => {
+    store.form = { date: '2020-01-01' };
+  });
+
+  describe('with changing another date', () => {
+    it('makes form date state that another date', () => {
+      expect(actions.setDate('2020-10-21')).toEqual({ date: '2020-10-21' });
+    });
+  });
+});
