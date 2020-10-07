@@ -5,9 +5,29 @@ import FormPayment from './FormPayment.js';
 import FormAmount from './FormAmount.js';
 import FormContent from './FormContent.js';
 
+import { addBreakdown } from '../api.js';
+
 export default function Form() {
   this.node = document.createElement('div');
   this.node.classList.add('form');
+
+  this.node.addEventListener('click', async ({ target }) => {
+    if (target.localName !== 'button') {
+      return;
+    }
+
+    if (target.textContent !== '확인') {
+      return;
+    }
+
+    const status = await addBreakdown();
+    if (!status) {
+      alert('모든 내용을 채우셔야 합니다.');
+      return;
+    }
+
+    alert('성공');
+  });
 
   this.render = () => {
     this.node.innerHTML = `
