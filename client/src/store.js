@@ -6,6 +6,7 @@ const initial = {
   type: '지출',
   date: getCurrentDate(),
   category: '선택하세요',
+  payment: '카드',
 };
 
 export const store = {
@@ -17,6 +18,7 @@ export const store = {
     type: initial.type,
     date: initial.date,
     category: initial.category,
+    payment: initial.payment,
   },
 };
 
@@ -52,6 +54,11 @@ export const actions = {
     const { form } = store;
 
     return { ...form, category };
+  },
+  setPayment(payment) {
+    const { form } = store;
+
+    return { ...form, payment };
   },
 };
 

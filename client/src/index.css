@@ -71,7 +71,8 @@ button {
 
 .form_type > div,
 .form_date > div,
-.form_category > div {
+.form_category > div,
+.form_payment > div {
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -106,7 +107,8 @@ button {
   width: 9rem;
 }
 
-.form_category > select {
+.form_category > select,
+.form_payment > select {
   margin-left: 1rem;
   border-left: none;
   border-top: none;
