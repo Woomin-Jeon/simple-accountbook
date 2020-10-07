@@ -1,7 +1,10 @@
+import { getCurrentMonth, getCurrentDate } from './util.js';
+
 const initial = {
-  month: new Date().getMonth() + 1,
+  month: getCurrentMonth(),
   tab: '내역',
   type: '지출',
+  date: getCurrentDate(),
 };
 
 export const store = {
@@ -11,6 +14,7 @@ export const store = {
   },
   form: {
     type: initial.type,
+    date: initial.date,
   },
 };
 
@@ -36,6 +40,11 @@ export const actions = {
     const { form } = store;
 
     return { ...form, type };
+  },
+  setDate(date) {
+    const { form } = store;
+
+    return { ...form, date };
   },
 };
 

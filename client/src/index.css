@@ -69,7 +69,8 @@ button {
   color: white;
 }
 
-.form_type > div {
+.form_type > div,
+.form_date > div {
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -88,4 +89,18 @@ button {
 .form_type_selected {
   color: white;
   background: #03d7c5;
+}
+
+.form_date > input {
+  margin-left: 1rem;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: 0.16rem solid #03d7c5;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-sizing: border-box;
+  text-align: center;
+  width: 9rem;
 }
