@@ -69,6 +69,29 @@ button {
   color: white;
 }
 
+.form {
+  display: table;
+  margin: 2rem auto;
+  background-color: #19b9ac0a;
+  border-radius: 0.7rem;
+}
+
+.form > div {
+  margin: 2rem 0;
+}
+
+.form > button {
+  width: 100%;
+  border: none;
+  background: #19b9ac;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 0 0 0.6rem 0.7rem;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
 .form_type > div,
 .form_date > div,
 .form_category > div,
@@ -77,6 +100,13 @@ button {
 .form_content > div {
   font-size: 1.2rem;
   font-weight: bold;
+  margin-left: 1rem;
+}
+
+.form_content > div,
+.form_category > div,
+.form_payment > div {
+  margin-left: 2rem;
 }
 
 .form_type > button {
@@ -106,7 +136,8 @@ button {
   font-weight: bold;
   box-sizing: border-box;
   text-align: center;
-  width: 9rem;
+  width: 11rem;
+  background-color: #ffffff00;
 }
 
 .form_category > select,
@@ -118,8 +149,8 @@ button {
   border-bottom: 0.16rem solid #03d7c5;
   outline: none;
   font-size: 1.1rem;
-  width: 7rem;
-  background-color: white;
+  width: 10.7rem;
+  background-color: #ffffff00;
 }
 
 .form_amount > input {
@@ -133,7 +164,8 @@ button {
   font-weight: bold;
   box-sizing: border-box;
   text-align: center;
-  width: 18rem;
+  width: 21rem;
+  background-color: #ffffff00;
 }
 
 .form_content > input {
@@ -147,5 +179,7 @@ button {
   font-weight: bold;
   box-sizing: border-box;
   text-align: center;
-  width: 18rem;
+  width: 21rem;
+  background-color: #ffffff00;
+  margin-right: 1rem;
 }
