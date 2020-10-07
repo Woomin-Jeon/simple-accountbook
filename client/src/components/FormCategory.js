@@ -18,7 +18,7 @@ export default function FormCategory() {
     this.node.innerHTML = `
       <div>카테고리</div>
       <select>
-        <option>${store.form.category}</option>
+        <option>선택하세요</option>
         ${categories.map(category => `
           <option ${store.form.category === category && 'selected="true"'}>
             ${category}
