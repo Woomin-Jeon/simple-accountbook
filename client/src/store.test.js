@@ -61,7 +61,7 @@ describe('setCategory', () => {
 
   describe('with changing to another category', () => {
     it('makes form category state to another category', () => {
-      expect(actions.setCategory('문화/여가')).toEqual({ category: '문화/여가' });
+      expect(actions.setCategory('문화/여가')).toEqual({ category: 9 });
     });
   });
 });
@@ -73,7 +73,7 @@ describe('setPayment', () => {
 
   describe('with changing to another payment', () => {
     it('makes form payment state to another payment', () => {
-      expect(actions.setPayment('문화/여가')).toEqual({ payment: '문화/여가' });
+      expect(actions.setPayment('카드')).toEqual({ payment: '카드' });
     });
   });
 });
