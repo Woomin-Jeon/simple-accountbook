@@ -44,3 +44,7 @@ export const convertKeyToCategory = (categoryKey) => {
     }
   }
 };
+
+export const splitByThousand = (amount) => {
+  return amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};

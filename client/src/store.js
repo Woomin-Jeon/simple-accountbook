@@ -1,4 +1,6 @@
-import { getCurrentMonth, getCurrentDate, convertCategoryToKey } from './util.js';
+import {
+  getCurrentMonth, getCurrentDate, convertCategoryToKey, splitByThousand,
+} from './util.js';
 
 const initial = {
   month: getCurrentMonth(),
@@ -70,10 +72,8 @@ export const actions = {
     const { form } = store;
 
     const characters = value.split('');
-    const lastCharacter = characters[characters.length - 1];
-
-    const won = lastCharacter === '원' ? '' : '원';
-    const amount = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + won;
+    const won = characters[characters.length - 1] === '원' ? '' : '원';
+    const amount = splitByThousand(value) + won;
 
     return { ...form, amount };
   },
