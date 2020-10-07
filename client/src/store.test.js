@@ -65,3 +65,15 @@ describe('setCategory', () => {
     });
   });
 });
+
+describe('setPayment', () => {
+  beforeEach(() => {
+    store.form = { payment: '선택하세요' };
+  });
+
+  describe('with changing to another payment', () => {
+    it('makes form payment state to another payment', () => {
+      expect(actions.setPayment('문화/여가')).toEqual({ payment: '문화/여가' });
+    });
+  });
+});
