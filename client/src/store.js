@@ -5,6 +5,7 @@ const initial = {
   tab: '내역',
   type: '지출',
   date: getCurrentDate(),
+  category: '선택하세요',
 };
 
 export const store = {
@@ -15,6 +16,7 @@ export const store = {
   form: {
     type: initial.type,
     date: initial.date,
+    category: initial.category,
   },
 };
 
@@ -45,6 +47,11 @@ export const actions = {
     const { form } = store;
 
     return { ...form, date };
+  },
+  setCategory(category) {
+    const { form } = store;
+
+    return { ...form, category };
   },
 };
 
