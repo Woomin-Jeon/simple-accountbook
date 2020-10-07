@@ -95,3 +95,15 @@ describe('setAmount', () => {
     });
   });
 });
+
+describe('setContent', () => {
+  beforeEach(() => {
+    store.form = { content: '' };
+  });
+
+  describe('with changing to new content', () => {
+    it('makes form content state to new content', () => {
+      expect(actions.setContent('군것질')).toEqual({ content: '군것질' });
+    });
+  });
+});
