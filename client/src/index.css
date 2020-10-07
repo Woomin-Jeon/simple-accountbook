@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+button {
+  color: #19b9ac;
+  background-color: white;
+}
+
 .flex {
   display: flex;
 }
@@ -60,6 +65,27 @@
 }
 
 .tab_selected {
-  background: white;
-  border-radius: 0.8rem;
+  background: #03d7c5;
+  color: white;
+}
+
+.form_type > div {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.form_type > button {
+  font-size: 1rem;
+  font-weight: bold;
+  border: 0.2rem solid #03d7c5;
+  border-radius: 0.4rem;
+  padding: 0 2rem;
+  margin-left: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.form_type_selected {
+  color: white;
+  background: #03d7c5;
 }

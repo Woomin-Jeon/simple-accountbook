@@ -1,12 +1,16 @@
 const initial = {
   month: new Date().getMonth() + 1,
   tab: '내역',
+  type: '지출',
 };
 
 export const store = {
   state: {
     month: initial.month,
     tab: initial.tab,
+  },
+  form: {
+    type: initial.type,
   },
 };
 
@@ -27,6 +31,11 @@ export const actions = {
     const { state } = store;
 
     return { ...state, tab };
+  },
+  setType(type) {
+    const { form } = store;
+
+    return { ...form, type };
   },
 };
 
