@@ -1,5 +1,7 @@
 import { store, actions, dispatch, subscriber } from '../store.js';
 
+import { convertKeyToCategory } from '../util.js';
+
 export default function FormCategory() {
   this.node = document.createElement('div');
   this.node.classList.add('flex');
@@ -20,7 +22,7 @@ export default function FormCategory() {
       <select>
         <option>선택하세요</option>
         ${categories.map(category => `
-          <option ${store.form.category === category && 'selected="true"'}>
+          <option ${convertKeyToCategory(store.form.category) === category && 'selected="true"'}>
             ${category}
           </option>
         `)}
