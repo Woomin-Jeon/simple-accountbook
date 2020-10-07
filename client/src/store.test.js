@@ -24,7 +24,7 @@ describe('setTab', () => {
   });
 
   describe('with clicked another tab', () => {
-    it('makes tab state that another tab', () => {
+    it('makes tab state to another tab', () => {
       expect(actions.setTab('통계')).toEqual({ tab: '통계' });
     });
   });
@@ -36,7 +36,7 @@ describe('setType', () => {
   });
 
   describe('with clicked another type', () => {
-    it('makes form type state that another type', () => {
+    it('makes form type state to another type', () => {
       expect(actions.setType('수입')).toEqual({ type: '수입' });
     });
   });
@@ -47,9 +47,21 @@ describe('setDate', () => {
     store.form = { date: '2020-01-01' };
   });
 
-  describe('with changing another date', () => {
-    it('makes form date state that another date', () => {
+  describe('with changing to another date', () => {
+    it('makes form date state to another date', () => {
       expect(actions.setDate('2020-10-21')).toEqual({ date: '2020-10-21' });
+    });
+  });
+});
+
+describe('setCategory', () => {
+  beforeEach(() => {
+    store.form = { category: '선택하세요' };
+  });
+
+  describe('with changing to another category', () => {
+    it('makes form category state to another category', () => {
+      expect(actions.setCategory('문화/여가')).toEqual({ category: '문화/여가' });
     });
   });
 });
