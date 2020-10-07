@@ -47,8 +47,8 @@ describe('setDate', () => {
     store.form = { date: '2020-01-01' };
   });
 
-  describe('with changing to another date', () => {
-    it('makes form date state to another date', () => {
+  describe('with changing to new date', () => {
+    it('makes form date state to new date', () => {
       expect(actions.setDate('2020-10-21')).toEqual({ date: '2020-10-21' });
     });
   });
@@ -74,6 +74,24 @@ describe('setPayment', () => {
   describe('with changing to another payment', () => {
     it('makes form payment state to another payment', () => {
       expect(actions.setPayment('문화/여가')).toEqual({ payment: '문화/여가' });
+    });
+  });
+});
+
+describe('setAmount', () => {
+  beforeEach(() => {
+    store.form = { amount: '선택하세요' };
+  });
+
+  describe('with \'won\' character', () => {
+    it('makes form amount state to new amount', () => {
+      expect(actions.setAmount('20000원')).toEqual({ amount: '20,000원' });
+    });
+  });
+
+  describe('without \'won\' character', () => {
+    it('makes form amount state to new amount', () => {
+      expect(actions.setAmount('20000')).toEqual({ amount: '20,000원' });
     });
   });
 });
