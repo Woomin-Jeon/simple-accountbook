@@ -7,6 +7,7 @@ const initial = {
   date: getCurrentDate(),
   category: '선택하세요',
   payment: '카드',
+  amount: '0원',
 };
 
 export const store = {
@@ -19,6 +20,7 @@ export const store = {
     date: initial.date,
     category: initial.category,
     payment: initial.payment,
+    amount: initial.amount,
   },
 };
 
@@ -59,6 +61,17 @@ export const actions = {
     const { form } = store;
 
     return { ...form, payment };
+  },
+  setAmount(value) {
+    const { form } = store;
+
+    const characters = value.split('');
+    const lastCharacter = characters[characters.length - 1];
+
+    const won = lastCharacter === '원' ? '' : '원';
+    const amount = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + won;
+
+    return { ...form, amount };
   },
 };
 

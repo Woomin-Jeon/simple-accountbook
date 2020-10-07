@@ -72,7 +72,8 @@ button {
 .form_type > div,
 .form_date > div,
 .form_category > div,
-.form_payment > div {
+.form_payment > div,
+.form_amount > div {
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -118,4 +119,18 @@ button {
   font-size: 1.1rem;
   width: 7rem;
   background-color: white;
+}
+
+.form_amount > input {
+  margin-left: 1rem;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: 0.16rem solid #03d7c5;
+  outline: none;
+  font-size: 1.7rem;
+  font-weight: bold;
+  box-sizing: border-box;
+  text-align: center;
+  width: 18rem;
 }
