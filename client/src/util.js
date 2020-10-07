@@ -15,3 +15,24 @@ export const getCurrentMonth = () => {
 
   return Number(month);
 };
+
+export const checkIsObjectFull = (object) => {
+  return Object.keys(object).every(key => !!object[key]);
+};
+
+export const convertCategoryToKey = (categoryName) => {
+  const categoryKeyMap = {
+    '월급': 1,
+    '용돈': 2,
+    '기타 수입': 3,
+    '식비': 4,
+    '생활': 5,
+    '쇼핑/뷰티': 6,
+    '교통': 7,
+    '의료/건강': 8,
+    '문화/여가': 9,
+    '미분류': 10,
+  };
+
+  return categoryKeyMap[categoryName];
+};

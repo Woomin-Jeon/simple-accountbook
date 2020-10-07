@@ -1,12 +1,12 @@
-import { getCurrentMonth, getCurrentDate } from './util.js';
+import { getCurrentMonth, getCurrentDate, convertCategoryToKey } from './util.js';
 
 const initial = {
   month: getCurrentMonth(),
   tab: '내역',
   type: '지출',
   date: getCurrentDate(),
-  category: '선택하세요',
-  payment: '카드',
+  category: 0,
+  payment: '',
   amount: '0원',
   content: '',
 };
@@ -54,8 +54,10 @@ export const actions = {
 
     return { ...form, date };
   },
-  setCategory(category) {
+  setCategory(categoryName) {
     const { form } = store;
+
+    const category = convertCategoryToKey(categoryName);
 
     return { ...form, category };
   },
