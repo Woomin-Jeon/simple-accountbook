@@ -8,6 +8,7 @@ const initial = {
   category: '선택하세요',
   payment: '카드',
   amount: '0원',
+  content: '',
 };
 
 export const store = {
@@ -21,6 +22,7 @@ export const store = {
     category: initial.category,
     payment: initial.payment,
     amount: initial.amount,
+    content: initial.content,
   },
 };
 
@@ -72,6 +74,11 @@ export const actions = {
     const amount = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + won;
 
     return { ...form, amount };
+  },
+  setContent(content) {
+    const { form } = store;
+
+    return { ...form, content };
   },
 };
 
