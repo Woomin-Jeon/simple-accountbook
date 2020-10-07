@@ -29,3 +29,15 @@ describe('setTab', () => {
     });
   });
 });
+
+describe('setType', () => {
+  beforeEach(() => {
+    store.form = { type: '지출' };
+  });
+
+  describe('with clicked another type', () => {
+    it('makes form type state that another type', () => {
+      expect(actions.setType('수입')).toEqual({ type: '수입' });
+    });
+  });
+});
