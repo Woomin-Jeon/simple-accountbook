@@ -56,12 +56,12 @@ describe('setDate', () => {
 
 describe('setCategory', () => {
   beforeEach(() => {
-    store.form = { category: '선택하세요' };
+    store.form = { category: '' };
   });
 
   describe('with changing to another category', () => {
     it('makes form category state to another category', () => {
-      expect(actions.setCategory('문화/여가')).toEqual({ category: 9 });
+      expect(actions.setCategory('문화/여가')).toEqual({ category: '문화/여가' });
     });
   });
 });

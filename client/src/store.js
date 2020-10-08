@@ -1,5 +1,5 @@
 import {
-  getCurrentMonth, getCurrentDate, convertCategoryToKey, splitByThousand,
+  getCurrentMonth, getCurrentDate, splitByThousand,
 } from './util.js';
 
 const initial = {
@@ -7,7 +7,7 @@ const initial = {
   tab: '내역',
   type: '지출',
   date: getCurrentDate(),
-  category: 0,
+  category: '',
   payment: '',
   amount: '0원',
   content: '',
@@ -56,10 +56,8 @@ export const actions = {
 
     return { ...form, date };
   },
-  setCategory(categoryName) {
+  setCategory(category) {
     const { form } = store;
-
-    const category = convertCategoryToKey(categoryName);
 
     return { ...form, category };
   },
