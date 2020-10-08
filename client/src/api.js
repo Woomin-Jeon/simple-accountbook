@@ -1,8 +1,9 @@
-import axios from 'axios';
+// TODO: Use
+// import axios from 'axios';
 
 import { store } from './store.js';
 
-import { checkIsObjectFull } from './util.js';
+import { checkIsObjectFull, convertFormData } from './util.js';
 
 export const addBreakdown = async () => {
   const { form } = store;
@@ -12,6 +13,7 @@ export const addBreakdown = async () => {
   }
 
   // TODO: Implement
-  console.log('data', form);
+  const data = convertFormData(form);
+  console.log('data', data);
   return true;
 };
