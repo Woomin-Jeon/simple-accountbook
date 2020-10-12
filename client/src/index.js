@@ -1,11 +1,7 @@
-import Header from './components/Header.js';
-import MonthToggle from './components/MonthToggle.js';
-import Tab from './components/Tab.js';
-import Form from './components/Form.js';
+import LoginPage from './pages/LoginPage.js';
+import BreakdownPage from './pages/BreakdownPage.js';
 
 const app = document.querySelector('#app');
 
-app.appendChild(new Header().node);
-app.appendChild(new MonthToggle().node);
-app.appendChild(new Tab().node);
-app.appendChild(new Form().node);
+app.appendChild(new LoginPage().node);
+app.appendChild(new BreakdownPage().node);
