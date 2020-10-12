@@ -1,5 +1,7 @@
 import { login } from '../api.js';
 
+import { handleRouting, redirect } from '../router.js';
+
 export default function LoginForm() {
   this.node = document.createElement('div');
   this.node.classList.add('login');
@@ -13,6 +15,10 @@ export default function LoginForm() {
     const loginPw = document.querySelector('#login_pw').value;
 
     const status = await login(loginId, loginPw);
+
+    // TODO: 로그인 성공시 리다이렉트 되도록 변경
+    redirect('/breakdown');
+    handleRouting();
 
     if (!status) {
       alert('아이디 혹은 비밀번호가 올바르지 않습니다');
