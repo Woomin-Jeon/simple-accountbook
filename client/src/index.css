@@ -12,6 +12,41 @@ button {
   display: flex;
 }
 
+.login {
+  width: 21rem;
+  margin: 0 auto;
+  margin-top: 21rem;
+  box-shadow: 0px 0px 0px 0px black;
+}
+
+.login > input {
+  height: 2rem;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: 0.16rem solid #03d7c5;
+  outline: none;
+  font-size: 1rem;
+  font-weight: bold;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 1.5rem 0;
+  width: 21rem;
+  background-color: #03d7c50a;
+}
+
+.login > button {
+  width: 21rem;
+  border: none;
+  background: #19b9ac;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 0 0 0.6rem 0.7rem;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
 .header {
   justify-content: center;
   font-size: 2rem;
@@ -184,37 +219,86 @@ button {
   margin-right: 1rem;
 }
 
-.login {
-  width: 21rem;
-  margin: 0 auto;
-  margin-top: 21rem;
-  box-shadow: 0px 0px 0px 0px black;
+.list {
+  display: table;
+  margin: 2rem auto;
+  justify-content: space-between;
+  width: 52rem;
 }
 
-.login > input {
-  height: 2rem;
-  border-left: none;
-  border-top: none;
-  border-right: none;
-  border-bottom: 0.16rem solid #03d7c5;
-  outline: none;
-  font-size: 1rem;
+.list_item {
+  justify-content: space-between;
+  border-bottom: 0.1rem solid #26c2b538;
+  padding: 0.5rem 0;
+}
+
+.list_item:hover {
+  background: #19b9ac0f;
+}
+
+.list_item_category_income {
+  background: #7c7cff;
+  color: white;
   font-weight: bold;
-  box-sizing: border-box;
+  border-radius: 1rem;
+  padding: 0.2rem 0;
   text-align: center;
-  padding: 1.5rem 0;
-  width: 21rem;
-  background-color: #03d7c50a;
 }
 
-.login > button {
-  width: 21rem;
-  border: none;
+.list_item_category_outcome {
   background: #19b9ac;
   color: white;
-  font-size: 1.3rem;
   font-weight: bold;
-  border-radius: 0 0 0.6rem 0.7rem;
-  padding: 0.4rem;
+  border-radius: 1rem;
+  padding: 0.2rem 0;
+  text-align: center;
+}
+
+.list_item_content {
+  font-weight: bold;
+  padding: 0.2rem;
+  color: #508f8a;
+}
+
+.list_item_button {
+  color: white;
+  font-weight: bold;
+  background-color: #ffffff00;
+  border: none;
+  outline: none;
+}
+
+.list_item_button:hover {
+  background: #19b9ac;
+  border-radius: 1rem;
   cursor: pointer;
+  width: 3rem;
+  margin: 0 2.4rem;
+  outline: none;
+}
+
+.list_item_method {
+  font-weight: bold;
+  padding: 0.2rem;
+  color: #508f8a;
+  text-align: center;
+}
+
+.list_item_amount {
+  font-weight: bold;
+  padding: 0.2rem;
+  color: #508f8a;
+  text-align: end;
+}
+
+.list_date {
+  color: #1b8a81;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 0.1rem solid #26c2b538;
+  padding: 0.5rem 0;
+}
+
+.list_item > * {
+  width: 15%;
 }
