@@ -26,5 +26,5 @@ export default function Tab() {
   };
 
   this.render();
-  observer.subscribe(this.render);
+  observer.subscribe('/breakdown', this.render);
 }

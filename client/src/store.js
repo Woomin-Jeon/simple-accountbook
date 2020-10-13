@@ -85,8 +85,8 @@ export const actions = {
 export const observer = {
   renderers: [],
 
-  subscribe(renderer) {
-    this.renderers.push({ path: location.pathname, renderer });
+  subscribe(path, renderer) {
+    this.renderers.push({ path, renderer });
   },
 
   unsubscribe(path) {
@@ -94,7 +94,6 @@ export const observer = {
   },
 
   update() {
-    console.log(this.renderers);
     this.renderers.forEach(({ renderer }) => renderer());
   },
 };

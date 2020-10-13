@@ -18,5 +18,5 @@ export default function FormAmount() {
   };
 
   this.render();
-  observer.subscribe(this.render);
+  observer.subscribe('/breakdown', this.render);
 }

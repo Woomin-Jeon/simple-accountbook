@@ -23,5 +23,5 @@ export default function FormType() {
   };
 
   this.render();
-  observer.subscribe(this.render);
+  observer.subscribe('/breakdown', this.render);
 }

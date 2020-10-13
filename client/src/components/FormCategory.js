@@ -29,5 +29,5 @@ export default function FormCategory() {
   };
 
   this.render();
-  observer.subscribe(this.render);
+  observer.subscribe('/breakdown', this.render);
 }
