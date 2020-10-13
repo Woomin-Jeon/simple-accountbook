@@ -1,9 +1,10 @@
-// TODO: Use
-// import axios from 'axios';
+import axios from 'axios';
 
 import { store } from './store.js';
 
 import { checkIsObjectFull, convertFormData } from './util.js';
+
+const URL = `http://localhost:3000`;
 
 export const addBreakdown = async () => {
   const { form } = store;
@@ -19,6 +20,10 @@ export const addBreakdown = async () => {
 };
 
 export const login = async (id, pw) => {
-  // TODO: Implement
-  console.log(id, pw);
+  try {
+    const { data } = await axios.post(`${URL}/auth`, { id, pw });
+    return data;
+  } catch {
+    return { token: null }
+  }
 };

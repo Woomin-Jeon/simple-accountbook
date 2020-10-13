@@ -16,19 +16,20 @@ export default function LoginForm() {
     const loginId = document.querySelector('#login_id').value;
     const loginPw = document.querySelector('#login_pw').value;
 
-    const status = await login(loginId, loginPw);
+    const { token } = await login(loginId, loginPw);
 
-    // TODO: 로그인 성공시 리다이렉트 되도록 변경
-    observer.unsubscribe(location.pathname);
-    redirect('/breakdown');
-    handleRouting();
-
-    if (!status) {
+    if (!token) {
       alert('아이디 혹은 비밀번호가 올바르지 않습니다');
       return;
     }
 
     alert('로그인 성공');
+    localStorage.setItem('token', token);
+
+    observer.unsubscribe(location.pathname);
+    console.log('login clicked', location.pathname);
+    redirect('/breakdown');
+    handleRouting();
   });
 
   this.render = () => {
