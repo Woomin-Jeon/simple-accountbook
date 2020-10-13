@@ -1,13 +1,13 @@
 import LoginPage from './pages/LoginPage.js';
 import BreakdownPage from './pages/BreakdownPage.js';
 
+const pages = {
+  '/': new LoginPage().node,
+  '/breakdown': new BreakdownPage().node,
+};
+
 export const handleRouting = () => {
   const app = document.querySelector('#app');
-
-  const pages = {
-    '/': new LoginPage().node,
-    '/breakdown': new BreakdownPage().node,
-  };
 
   app.firstElementChild && app.removeChild(app.firstElementChild);
 
