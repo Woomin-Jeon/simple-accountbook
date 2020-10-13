@@ -5,7 +5,7 @@ import FormPayment from './FormPayment.js';
 import FormAmount from './FormAmount.js';
 import FormContent from './FormContent.js';
 
-import { addBreakdown } from '@/api.js';
+import api from '@/api.js';
 
 export default function Form() {
   this.node = document.createElement('div');
@@ -20,7 +20,7 @@ export default function Form() {
       return;
     }
 
-    const status = await addBreakdown();
+    const status = await api.addBreakdown();
     !status && alert('모든 내용을 채우셔야 합니다.');
   });
 
