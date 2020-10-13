@@ -1,6 +1,6 @@
 import api from '@/api.js';
 
-import { actions, dispatch, observer } from '@/store.js';
+import { observer } from '@/store.js';
 
 import { handleRouting, redirect } from '@/router.js';
 
@@ -25,8 +25,6 @@ export default function LoginForm() {
 
     alert('로그인 성공');
     localStorage.setItem('token', token);
-
-    dispatch('breakdown', () => actions.getItems());
 
     observer.unsubscribe(location.pathname);
     redirect('/breakdown');
