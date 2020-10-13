@@ -1,5 +1,7 @@
 import { store, actions } from './store.js';
 
+import api from './api.js';
+
 describe('setMonth', () => {
   beforeEach(() => {
     store.state = { month: 3 };
@@ -105,5 +107,17 @@ describe('setContent', () => {
     it('makes form content state to new content', () => {
       expect(actions.setContent('군것질')).toEqual({ content: '군것질' });
     });
+  });
+});
+
+describe('getItems', () => {
+  beforeEach(() => {
+    store.breakdown = { items: [] };
+    api.getBreakdowns = jest.fn().mockResolvedValue(['item1', 'item2']);
+  });
+
+  it('gets all items by user from server', async () => {
+    const { items } = await actions.getItems();
+    expect(items).toHaveLength(2);
   });
 });
