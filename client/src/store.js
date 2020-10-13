@@ -2,6 +2,8 @@ import {
   getCurrentMonth, getCurrentDate, splitByThousand,
 } from './util.js';
 
+import api from './api.js';
+
 const initial = {
   month: getCurrentMonth(),
   tab: '내역',
@@ -11,6 +13,7 @@ const initial = {
   payment: '',
   amount: '0원',
   content: '',
+  items: [],
 };
 
 export const store = {
@@ -25,6 +28,9 @@ export const store = {
     payment: initial.payment,
     amount: initial.amount,
     content: initial.content,
+  },
+  breakdown: {
+    items: initial.items,
   },
 };
 
@@ -79,6 +85,13 @@ export const actions = {
     const { form } = store;
 
     return { ...form, content };
+  },
+  async getItems() {
+    const { breakdown } = store;
+
+    const items = await api.getBreakdowns();
+
+    return { ...breakdown, items };
   },
 };
 
