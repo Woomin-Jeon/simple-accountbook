@@ -5,7 +5,7 @@ import FormPayment from './FormPayment.js';
 import FormAmount from './FormAmount.js';
 import FormContent from './FormContent.js';
 
-import { addBreakdown } from '../api.js';
+import { addBreakdown } from '@/api.js';
 
 export default function Form() {
   this.node = document.createElement('div');

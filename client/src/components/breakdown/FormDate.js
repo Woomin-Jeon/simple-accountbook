@@ -1,4 +1,4 @@
-import { store, actions, dispatch } from '../store.js';
+import { store, actions, dispatch } from '@/store.js';
 
 export default function FormDate() {
   this.node = document.createElement('div');

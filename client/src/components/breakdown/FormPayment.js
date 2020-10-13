@@ -1,4 +1,4 @@
-import { actions, dispatch } from '../store.js';
+import { actions, dispatch } from '@/store.js';
 
 export default function FormPayment() {
   this.node = document.createElement('div');

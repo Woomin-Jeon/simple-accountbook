@@ -8,6 +8,14 @@ module.exports = {
     path: path.resolve(__dirname, './'),
     filename: 'main.js',
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src/'),
+      '@login': path.resolve(__dirname, './src/components/login/'),
+      '@header': path.resolve(__dirname, './src/components/header/'),
+      '@breakdown': path.resolve(__dirname, './src/components/breakdown/'),
+    },
+  },
   module: {
     rules: [
       {

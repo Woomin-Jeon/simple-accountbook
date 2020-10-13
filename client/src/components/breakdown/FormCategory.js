@@ -1,4 +1,4 @@
-import { store, actions, dispatch, observer } from '../store.js';
+import { store, actions, dispatch, observer } from '@/store.js';
 
 export default function FormCategory() {
   this.node = document.createElement('div');

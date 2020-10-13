@@ -1,4 +1,4 @@
-import LoginForm from '../components/LoginForm.js';
+import LoginForm from '@login/LoginForm.js';
 
 export default function LoginPage() {
   this.node = document.createElement('div');

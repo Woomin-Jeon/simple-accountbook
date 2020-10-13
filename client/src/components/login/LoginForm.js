@@ -1,8 +1,8 @@
-import { login } from '../api.js';
+import { login } from '@/api.js';
 
-import { observer } from '../store.js';
+import { observer } from '@/store.js';
 
-import { handleRouting, redirect } from '../router.js';
+import { handleRouting, redirect } from '@/router.js';
 
 export default function LoginForm() {
   this.node = document.createElement('div');
