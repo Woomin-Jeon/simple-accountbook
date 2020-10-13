@@ -5,6 +5,8 @@ import FormPayment from './FormPayment.js';
 import FormAmount from './FormAmount.js';
 import FormContent from './FormContent.js';
 
+import { actions, dispatch } from '@/store.js';
+
 import api from '@/api.js';
 
 export default function Form() {
@@ -22,6 +24,8 @@ export default function Form() {
 
     const status = await api.addBreakdown();
     !status && alert('모든 내용을 채우셔야 합니다.');
+
+    dispatch('breakdown', () => actions.getItems());
   });
 
   this.render = () => {
