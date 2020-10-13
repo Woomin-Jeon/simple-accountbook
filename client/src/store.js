@@ -34,8 +34,8 @@ export const store = {
   },
 };
 
-export const dispatch = (key, action) => {
-  store[key] = action();
+export const dispatch = async (key, action) => {
+  store[key] = await action();
 
   observer.update();
 };
@@ -89,7 +89,7 @@ export const actions = {
   async getItems() {
     const { breakdown } = store;
 
-    const items = await api.getBreakdowns();
+    const { breakdowns: items } = await api.getBreakdowns();
 
     return { ...breakdown, items };
   },
