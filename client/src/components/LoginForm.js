@@ -1,5 +1,7 @@
 import { login } from '../api.js';
 
+import { observer } from '../store.js';
+
 import { handleRouting, redirect } from '../router.js';
 
 export default function LoginForm() {
@@ -17,6 +19,7 @@ export default function LoginForm() {
     const status = await login(loginId, loginPw);
 
     // TODO: 로그인 성공시 리다이렉트 되도록 변경
+    observer.unsubscribe(location.pathname);
     redirect('/breakdown');
     handleRouting();
 

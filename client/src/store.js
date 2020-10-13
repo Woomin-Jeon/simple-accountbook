@@ -31,7 +31,7 @@ export const store = {
 export const dispatch = (key, action) => {
   store[key] = action();
 
-  updateRendering();
+  observer.update();
 };
 
 export const actions = {
@@ -82,8 +82,19 @@ export const actions = {
   },
 };
 
-export const subscriber = new Set();
+export const observer = {
+  renderers: [],
 
-const updateRendering = () => {
-  [...subscriber].forEach(render => render());
+  subscribe(renderer) {
+    this.renderers.push({ path: location.pathname, renderer });
+  },
+
+  unsubscribe(path) {
+    this.renderers = this.renderers.filter(renderer => renderer.path !== path);
+  },
+
+  update() {
+    console.log(this.renderers);
+    this.renderers.forEach(({ renderer }) => renderer());
+  },
 };

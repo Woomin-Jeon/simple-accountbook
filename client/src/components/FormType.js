@@ -1,4 +1,4 @@
-import { store, actions, dispatch, subscriber } from '../store.js';
+import { store, actions, dispatch, observer } from '../store.js';
 
 export default function FormType() {
   this.node = document.createElement('div');
@@ -23,5 +23,5 @@ export default function FormType() {
   };
 
   this.render();
-  subscriber.add(this.render);
+  observer.subscribe(this.render);
 }

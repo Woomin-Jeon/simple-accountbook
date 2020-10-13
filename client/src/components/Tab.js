@@ -1,4 +1,4 @@
-import { store, actions, dispatch, subscriber } from '../store.js';
+import { store, actions, dispatch, observer } from '../store.js';
 
 export default function Tab() {
   this.node = document.createElement('div');
@@ -26,5 +26,5 @@ export default function Tab() {
   };
 
   this.render();
-  subscriber.add(this.render);
+  observer.subscribe(this.render);
 }
