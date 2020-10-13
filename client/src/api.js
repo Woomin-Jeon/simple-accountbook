@@ -13,17 +13,26 @@ export const addBreakdown = async () => {
     return false;
   }
 
-  // TODO: Implement
   const data = convertFormData(form);
-  console.log('data', data);
-  return true;
+  try {
+    const { status } = await axios.post(`${URL}/breakdown`, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+
+    return status;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
 };
 
 export const login = async (id, pw) => {
   try {
     const { data } = await axios.post(`${URL}/auth`, { id, pw });
     return data;
-  } catch {
-    return { token: null }
+  } catch (err) {
+    return { token: null };
   }
 };

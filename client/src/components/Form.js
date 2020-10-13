@@ -21,12 +21,7 @@ export default function Form() {
     }
 
     const status = await addBreakdown();
-    if (!status) {
-      alert('모든 내용을 채우셔야 합니다.');
-      return;
-    }
-
-    alert('성공');
+    !status && alert('모든 내용을 채우셔야 합니다.');
   });
 
   this.render = () => {
