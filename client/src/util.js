@@ -38,3 +38,12 @@ export const convertFormData = (formData) => {
 
   return { amount, content, method, come, categoryId, date };
 };
+
+export const splitByDate = (breakdowns) => {
+  const dates = new Set(breakdowns.map(breakdown => breakdown.date));
+
+  return [...dates].map(date => {
+    const matchedBreakdowns = breakdowns.filter((breakdown) => breakdown.date === date);
+    return { date, items: matchedBreakdowns };
+  }).sort((a, b) => b.date.localeCompare(a.date));
+};
