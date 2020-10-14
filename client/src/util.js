@@ -63,3 +63,7 @@ export const getTotalCome = (come, breakdowns) => {
 
   return splitByThousand(totalCome.toString());
 };
+
+export const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};

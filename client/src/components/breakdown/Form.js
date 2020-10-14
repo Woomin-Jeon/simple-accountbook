@@ -18,28 +18,17 @@ export default function Form() {
       return;
     }
 
-    const button = target.textContent;
+    const buttonFunction = {
+      '확인': api.addBreakdown,
+      '수정': api.updateBreakdown,
+      '삭제': api.deleteBreakdown,
+    };
 
-    if (button === '확인') {
-      await api.addBreakdown();
+    await buttonFunction[target.textContent]();
+    alert('성공적으로 처리하였습니다.');
 
-      dispatch('breakdown', () => actions.getItems());
-      dispatch('form', () => actions.resetForm());
-    }
-
-    if (button === '수정') {
-      await api.updateBreakdown();
-
-      dispatch('breakdown', () => actions.getItems());
-      dispatch('form', () => actions.resetForm());
-    }
-
-    if (button === '삭제') {
-      await api.deleteBreakdown();
-
-      dispatch('breakdown', () => actions.getItems());
-      dispatch('form', () => actions.resetForm());
-    }
+    dispatch('breakdown', () => actions.getItems());
+    dispatch('form', () => actions.resetForm());
   });
 
   this.render = () => {

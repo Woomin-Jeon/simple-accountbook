@@ -1,6 +1,6 @@
 import { store, actions, dispatch, observer } from '@/store.js';
 
-import { splitByDate, filterByCome } from '@/util.js';
+import { splitByDate, filterByCome, scrollToTop } from '@/util.js';
 
 import ListDate from './ListDate.js';
 
@@ -20,6 +20,8 @@ export default function List() {
     dispatch('form', () => actions.setAllForm({
       amount, category, type, date, payment, content, editMode: true, itemId,
     }));
+
+    scrollToTop();
   });
 
   this.render = () => {

@@ -1,5 +1,3 @@
-import { store } from '@/store.js';
-
 import { getTotalCome } from '@/util.js';
 
 import ListItem from './ListItem.js';
