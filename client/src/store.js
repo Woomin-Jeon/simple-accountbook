@@ -90,6 +90,19 @@ export const actions = {
 
     return { ...form, content };
   },
+  resetForm() {
+    const { form } = store;
+
+    return {
+      ...form,
+      type: initial.type,
+      date: initial.date,
+      category: initial.category,
+      payment: initial.payment,
+      amount: initial.amount,
+      content: initial.content,
+    };
+  },
   async getItems() {
     const { breakdown } = store;
 

@@ -25,8 +25,8 @@ export default function Form() {
     const status = await api.addBreakdown();
     !status && alert('모든 내용을 채우셔야 합니다.');
 
-    dispatch('breakdown', () => actions.resetForm());
     dispatch('breakdown', () => actions.getItems());
+    dispatch('form', () => actions.resetForm());
   });
 
   this.render = () => {
