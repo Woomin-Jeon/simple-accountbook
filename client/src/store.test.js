@@ -1,5 +1,7 @@
 import { store, actions } from './store.js';
 
+import { getCurrentDate } from './util.js';
+
 import api from './api.js';
 
 describe('setMonth', () => {
@@ -106,6 +108,30 @@ describe('setContent', () => {
   describe('with changing to new content', () => {
     it('makes form content state to new content', () => {
       expect(actions.setContent('군것질')).toEqual({ content: '군것질' });
+    });
+  });
+});
+
+describe('resetForm', () => {
+  beforeEach(() => {
+    store.form = {
+      type: '지출',
+      date: '2020-10-14',
+      category: '식비',
+      payment: '카드',
+      amount: '12,000원',
+      content: '점심으로 파스타 먹음',
+    };
+  });
+
+  it('resets all form states', () => {
+    expect(actions.resetForm()).toEqual({
+      type: '지출',
+      date: getCurrentDate(),
+      category: '',
+      payment: '',
+      amount: '0원',
+      content: '',
     });
   });
 });
