@@ -90,6 +90,11 @@ export const actions = {
 
     return { ...form, content };
   },
+  setAllForm({ amount, category, type, date, payment, content }) {
+    const { form } = store;
+
+    return { ...form, amount, category, type, date, payment, content };
+  },
   resetForm() {
     const { form } = store;
 
