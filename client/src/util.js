@@ -1,3 +1,5 @@
+import { store } from '@/store.js';
+
 export const getCurrentDate = () => {
   const today = new Date();
 
@@ -46,4 +48,22 @@ export const splitByDate = (breakdowns) => {
     const matchedBreakdowns = breakdowns.filter((breakdown) => breakdown.date === date);
     return { date, items: matchedBreakdowns };
   }).sort((a, b) => b.date.localeCompare(a.date));
+};
+
+export const filterByCome = (breakdowns) => {
+  return breakdowns.filter(({ come }) => {
+    const { incomeFilter, outcomeFilter } = store.breakdown;
+
+    return come === '수입' && incomeFilter || come === '지출' && outcomeFilter;
+  });
+};
+
+export const getTotalCome = (come, breakdowns) => {
+  const targets = breakdowns
+    .filter(breakdown => breakdown.come === come)
+    .map(({ amount }) => Number(amount.replace(/,|원/g, '')));
+
+  const totalCome = targets.reduce((acc, cur) => acc + cur, 0);
+
+  return splitByThousand(totalCome.toString());
 };

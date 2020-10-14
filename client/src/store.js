@@ -14,6 +14,8 @@ const initial = {
   amount: '0원',
   content: '',
   items: [],
+  incomeFilter: true,
+  outcomeFilter: true,
 };
 
 export const store = {
@@ -31,6 +33,8 @@ export const store = {
   },
   breakdown: {
     items: initial.items,
+    incomeFilter: initial.incomeFilter,
+    outcomeFilter: initial.outcomeFilter,
   },
 };
 
@@ -92,6 +96,16 @@ export const actions = {
     const { breakdowns: items } = await api.getBreakdowns();
 
     return { ...breakdown, items };
+  },
+  toggleIncomeFilter() {
+    const { breakdown } = store;
+
+    return { ...breakdown, incomeFilter: !breakdown.incomeFilter };
+  },
+  toggleOutcomeFilter() {
+    const { breakdown } = store;
+
+    return { ...breakdown, outcomeFilter: !breakdown.outcomeFilter };
   },
 };
 

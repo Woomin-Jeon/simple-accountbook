@@ -1,6 +1,6 @@
 import { store, observer } from '@/store.js';
 
-import { splitByDate } from '@/util.js';
+import { splitByDate, filterByCome } from '@/util.js';
 
 import ListDate from './ListDate.js';
 
@@ -9,7 +9,8 @@ export default function List() {
   this.node.classList.add('list');
 
   this.render = () => {
-    const breakdownsByDate = splitByDate(store.breakdown.items);
+    const filteredBreakdowns = filterByCome(store.breakdown.items);
+    const breakdownsByDate = splitByDate(filteredBreakdowns);
 
     this.node.innerHTML = `
       ${breakdownsByDate.map(({ date, items }) => `
