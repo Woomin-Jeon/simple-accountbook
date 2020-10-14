@@ -5,7 +5,7 @@ import FormPayment from './FormPayment.js';
 import FormAmount from './FormAmount.js';
 import FormContent from './FormContent.js';
 
-import { actions, dispatch, observer } from '@/store.js';
+import { store, actions, dispatch, observer } from '@/store.js';
 
 import api from '@/api.js';
 
@@ -18,15 +18,28 @@ export default function Form() {
       return;
     }
 
-    if (target.textContent !== '확인') {
-      return;
+    const button = target.textContent;
+
+    if (button === '확인') {
+      await api.addBreakdown();
+
+      dispatch('breakdown', () => actions.getItems());
+      dispatch('form', () => actions.resetForm());
     }
 
-    const status = await api.addBreakdown();
-    !status && alert('모든 내용을 채우셔야 합니다.');
+    if (button === '수정') {
+      await api.updateBreakdown();
 
-    dispatch('breakdown', () => actions.getItems());
-    dispatch('form', () => actions.resetForm());
+      dispatch('breakdown', () => actions.getItems());
+      dispatch('form', () => actions.resetForm());
+    }
+
+    if (button === '삭제') {
+      await api.deleteBreakdown();
+
+      dispatch('breakdown', () => actions.getItems());
+      dispatch('form', () => actions.resetForm());
+    }
   });
 
   this.render = () => {
@@ -34,7 +47,12 @@ export default function Form() {
       <div id='layer1' class='flex'></div>
       <div id='layer2' class='flex'></div>
       <div id='layer3' class='flex'></div>
-      <button>확인</button>
+      ${store.form.editMode
+    ?
+    `<button class='form_button_edit'>수정</button>
+     <button class='form_button_delete'>삭제</button>`
+    :
+    `<button class='form_button_add'>확인</button>`}  
     `;
 
     const layer1 = this.node.querySelector('#layer1');

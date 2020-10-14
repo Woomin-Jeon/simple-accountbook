@@ -18,10 +18,6 @@ export const getCurrentMonth = () => {
   return Number(month);
 };
 
-export const checkIsObjectFull = (object) => {
-  return Object.keys(object).every(key => !!object[key]);
-};
-
 export const splitByThousand = (amount) => {
   return amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };

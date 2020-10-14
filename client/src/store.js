@@ -7,6 +7,8 @@ import api from './api.js';
 const initial = {
   month: getCurrentMonth(),
   tab: '내역',
+  editMode: false,
+  itemId: '',
   type: '지출',
   date: getCurrentDate(),
   category: '',
@@ -24,6 +26,8 @@ export const store = {
     tab: initial.tab,
   },
   form: {
+    editMode: initial.editMode,
+    itemId: initial.itemId,
     type: initial.type,
     date: initial.date,
     category: initial.category,
@@ -90,10 +94,10 @@ export const actions = {
 
     return { ...form, content };
   },
-  setAllForm({ amount, category, type, date, payment, content }) {
+  setAllForm({ amount, category, type, date, payment, content, editMode, itemId }) {
     const { form } = store;
 
-    return { ...form, amount, category, type, date, payment, content };
+    return { ...form, amount, category, type, date, payment, content, editMode, itemId };
   },
   resetForm() {
     const { form } = store;

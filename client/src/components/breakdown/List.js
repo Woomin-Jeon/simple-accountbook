@@ -18,7 +18,7 @@ export default function List() {
     const { amount, category, come: type, date, method: payment, content } = targetBreakdown;
 
     dispatch('form', () => actions.setAllForm({
-      amount, category, type, date, payment, content,
+      amount, category, type, date, payment, content, editMode: true, itemId,
     }));
   });
 
