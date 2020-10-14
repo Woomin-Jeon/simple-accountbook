@@ -1,4 +1,4 @@
-import { actions, dispatch } from '@/store.js';
+import { store, actions, dispatch } from '@/store.js';
 
 export default function FormContent() {
   this.node = document.createElement('div');
@@ -13,7 +13,7 @@ export default function FormContent() {
   this.render = () => {
     this.node.innerHTML = `
       <div>내용</div>
-      <input type='text' />
+      <input type='text' value='${store.form.content}' />
     `;
   };
 

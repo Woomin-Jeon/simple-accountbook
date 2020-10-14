@@ -1,4 +1,4 @@
-import { store, actions, dispatch, observer } from '@/store.js';
+import { store, actions, dispatch } from '@/store.js';
 
 export default function FormType() {
   this.node = document.createElement('div');
@@ -23,5 +23,4 @@ export default function FormType() {
   };
 
   this.render();
-  observer.subscribe('/breakdown', this.render);
 }

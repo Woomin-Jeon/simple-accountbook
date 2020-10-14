@@ -1,4 +1,4 @@
-import { actions, dispatch } from '@/store.js';
+import { store, actions, dispatch } from '@/store.js';
 
 export default function FormPayment() {
   this.node = document.createElement('div');
@@ -15,8 +15,8 @@ export default function FormPayment() {
       <div>결제수단</div>
       <select>
         <option>선택하세요</option>
-        <option>카드</option>
-        <option>현금</option>
+        <option ${store.form.payment === '카드' && 'selected'}>카드</option>
+        <option ${store.form.payment === '현금' && 'selected'}>현금</option>
       </select>  
     `;
   };
