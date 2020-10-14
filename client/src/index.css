@@ -12,6 +12,11 @@ button {
   display: flex;
 }
 
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .login {
   width: 21rem;
   margin: 0 auto;
@@ -297,6 +302,29 @@ button {
   font-weight: bold;
   border-bottom: 0.1rem solid #26c2b538;
   padding: 0.5rem 0;
+  margin-top: 1.5rem;
+}
+
+.list_date_result {
+  color: #1b8a81;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 0;
+  position: relative;
+  top: 2.2rem;
+}
+
+.list_date_result > div {
+  margin-left: 1rem;
+}
+
+.list_date_result_income {
+  color: #7c7cff;
+}
+
+.list_date_result_outcome {
+  color: #1b8a81a6;
+  margin-right: 0.2rem;
 }
 
 .list_item > * {
@@ -307,7 +335,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem auto;
+  margin: 2rem auto 0 auto;
   width: 52rem;
   font-size: 1rem;
   font-weight: bold;
