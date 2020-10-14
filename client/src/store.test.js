@@ -112,6 +112,38 @@ describe('setContent', () => {
   });
 });
 
+describe('setAllForm', () => {
+  beforeEach(() => {
+    store.form = {
+      type: '',
+      date: '',
+      category: '',
+      payment: '',
+      amount: '',
+      content: '',
+    };
+  });
+
+  it('makes all form states full', () => {
+    const type = '지출';
+    const date = '2020-10-14';
+    const category = '식비';
+    const payment = '카드';
+    const amount = '12,000원';
+    const content = '짬뽕 사먹음';
+
+    expect(actions.setAllForm({ type, date, category, payment, amount, content }))
+      .toEqual({
+        type: '지출',
+        date: '2020-10-14',
+        category: '식비',
+        payment: '카드',
+        amount: '12,000원',
+        content: '짬뽕 사먹음',
+      });
+  });
+});
+
 describe('resetForm', () => {
   beforeEach(() => {
     store.form = {
