@@ -302,3 +302,23 @@ button {
 .list_item > * {
   width: 15%;
 }
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  width: 52rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1933b9;
+}
+
+.filter_text {
+  margin-left: 1rem;
+}
+
+.filter_total {
+  width: 9rem;
+  text-align: end;
+}
