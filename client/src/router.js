@@ -23,6 +23,11 @@ export const handleRouting = () => {
     handleRouting();
   }
 
+  if (currentPath === '/' && token) {
+    redirect('/breakdown');
+    handleRouting();
+  }
+
   dispatch('breakdown', () => actions.getItems());
 };
 
