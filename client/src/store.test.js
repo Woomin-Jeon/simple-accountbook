@@ -113,11 +113,31 @@ describe('setContent', () => {
 describe('getItems', () => {
   beforeEach(() => {
     store.breakdown = { items: [] };
-    api.getBreakdowns = jest.fn().mockResolvedValue(['item1', 'item2']);
+    api.getBreakdowns = jest.fn().mockResolvedValue({ breakdowns: ['item1', 'item2'] });
   });
 
   it('gets all items by user from server', async () => {
     const { items } = await actions.getItems();
     expect(items).toHaveLength(2);
+  });
+});
+
+describe('toggleIncomeFilter', () => {
+  beforeEach(() => {
+    store.breakdown = { incomeFilter: true };
+  });
+
+  it('toggles income filter state', () => {
+    expect(actions.toggleIncomeFilter()).toEqual({ incomeFilter: false });
+  });
+});
+
+describe('toggleOutcomeFilter', () => {
+  beforeEach(() => {
+    store.breakdown = { outcomeFilter: true };
+  });
+
+  it('toggles outcome filter state', () => {
+    expect(actions.toggleOutcomeFilter()).toEqual({ outcomeFilter: false });
   });
 });
