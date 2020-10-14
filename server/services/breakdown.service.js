@@ -53,7 +53,7 @@ const updateBreakdown = async (req, res) => {
 
 const deleteBreakdown = async (req, res) => {
   const { id: userId } = req.user;
-  const { breakdownId } = req.body;
+  const { breakdownId } = req.params;
 
   try {
     await model.deleteBreakdown(userId, breakdownId);
