@@ -366,6 +366,18 @@ button {
   text-align: end;
 }
 
+.chart_header {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 1rem auto;
+  width: 51rem;
+  color: #176a64;
+}
+
+.chart_header > div > label > span {
+  margin-right: 2rem;
+}
+
 .pie_chart {
   display: table;
   margin: 4rem auto;
