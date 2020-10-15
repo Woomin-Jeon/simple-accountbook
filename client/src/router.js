@@ -2,10 +2,12 @@ import { actions, dispatch } from '@/store.js';
 
 import LoginPage from './pages/LoginPage.js';
 import BreakdownPage from './pages/BreakdownPage.js';
+import StatisticPage from './pages/StatisticPage.js';
 
 const pages = {
   '/': new LoginPage().node,
   '/breakdown': new BreakdownPage().node,
+  '/statistic': new StatisticPage().node,
 };
 
 export const handleRouting = () => {
