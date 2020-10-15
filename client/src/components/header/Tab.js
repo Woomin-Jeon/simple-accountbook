@@ -1,5 +1,9 @@
 import { store, actions, dispatch, observer } from '@/store.js';
 
+import { redirect, handleRouting } from '@/router.js';
+
+import { getTabURL } from '@/util.js';
+
 export default function Tab() {
   this.node = document.createElement('div');
   this.node.classList.add('flex');
@@ -7,6 +11,10 @@ export default function Tab() {
 
   this.node.addEventListener('click', (event) => {
     const tabName = event.target.textContent;
+
+    const targetURL = getTabURL(tabName);
+    redirect(targetURL);
+    handleRouting();
 
     dispatch('state', () => actions.setTab(tabName));
   });

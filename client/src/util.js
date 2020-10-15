@@ -67,3 +67,14 @@ export const getTotalCome = (come, breakdowns) => {
 export const scrollToTop = () => {
   window.scrollTo(0, 0);
 };
+
+export const getTabURL = (tabName) => {
+  const tabURLMap = {
+    '내역': '/breakdown',
+    // TODO: 캘린더 페이지 구현시 '/calendar'로 변경
+    '달력': '/breakdown',
+    '통계': '/statistic',
+  };
+
+  return tabURLMap[tabName];
+};
