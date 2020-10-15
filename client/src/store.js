@@ -135,11 +135,13 @@ export const actions = {
 export const observer = {
   renderers: [],
 
-  subscribe(path, renderer) {
-    this.renderers.push({ path, renderer });
+  subscribe(renderer) {
+    const currentPath = location.pathname;
+    this.renderers.push({ path: currentPath, renderer });
   },
 
   unsubscribe(path) {
+    console.log('unsubscribe', path);
     this.renderers = this.renderers.filter(renderer => renderer.path !== path);
   },
 
