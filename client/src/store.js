@@ -110,6 +110,7 @@ export const actions = {
       payment: initial.payment,
       amount: initial.amount,
       content: initial.content,
+      editMode: initial.editMode,
     };
   },
   async getItems() {
