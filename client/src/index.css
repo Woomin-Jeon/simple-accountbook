@@ -366,7 +366,29 @@ button {
   text-align: end;
 }
 
-.canvas {
+.pie_chart {
   display: table;
   margin: 4rem auto;
+}
+
+.bar_chart {
+  width: 51rem;
+  margin: 0 auto;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #176a64;
+  border-top: 0.2rem solid #2ecdc1;
+}
+
+.bar {
+  border-bottom: 0.1rem solid black;
+  padding: 0.7rem;
+}
+
+.bar > div {
+  width: 10rem;
+}
+
+.bar_amount_text {
+  text-align: end;
 }

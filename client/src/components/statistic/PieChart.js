@@ -6,7 +6,7 @@ export default function PieChart({ radius }) {
   this.node = document.createElement('canvas');
   this.node.setAttribute('width', radius * 2);
   this.node.setAttribute('height', radius * 2);
-  this.node.classList.add('canvas');
+  this.node.classList.add('pie_chart');
 
   const centerPoint = { x: radius, y: radius };
   const ctx = this.node.getContext('2d');
@@ -26,7 +26,7 @@ export default function PieChart({ radius }) {
     const outcomeBreakdowns = store.breakdown.items.filter(item => item.come === '지출');
     const costByCategories = splitByCategory(outcomeBreakdowns);
 
-    let start = 0;
+    let start = -90;
     costByCategories.forEach((categoryCost, index) => {
       const degree = categoryCost.percentage * 360;
       drawPiePart(start, start + degree, getNextRGB(index));
