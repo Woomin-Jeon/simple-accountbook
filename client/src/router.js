@@ -1,13 +1,13 @@
-import { actions, dispatch } from '@/store.js';
+import { actions, dispatch, observer } from '@/store.js';
 
 import LoginPage from './pages/LoginPage.js';
 import BreakdownPage from './pages/BreakdownPage.js';
 import StatisticPage from './pages/StatisticPage.js';
 
 const pages = {
-  '/': new LoginPage().node,
-  '/breakdown': new BreakdownPage().node,
-  '/statistic': new StatisticPage().node,
+  '/': () => new LoginPage().node,
+  '/breakdown': () => new BreakdownPage().node,
+  '/statistic': () => new StatisticPage().node,
 };
 
 export const handleRouting = () => {
@@ -16,7 +16,7 @@ export const handleRouting = () => {
   app.firstElementChild && app.removeChild(app.firstElementChild);
 
   const currentPath = location.pathname;
-  app.appendChild(pages[currentPath]);
+  app.appendChild(pages[currentPath]());
 
   const token = localStorage.getItem('token');
 
@@ -34,5 +34,8 @@ export const handleRouting = () => {
 };
 
 export const redirect = (path) => {
+  const currentPath = location.pathname;
+  observer.unsubscribe(currentPath);
+
   history.pushState({}, '', path);
 };
