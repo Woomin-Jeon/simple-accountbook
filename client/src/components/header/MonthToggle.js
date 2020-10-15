@@ -23,5 +23,5 @@ export default function MonthToggle() {
   };
 
   this.render();
-  observer.subscribe('/breakdown', this.render);
+  observer.subscribe(this.render);
 }

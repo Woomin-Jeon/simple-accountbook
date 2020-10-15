@@ -24,5 +24,5 @@ export default function ChartHeader() {
   };
 
   this.render();
-  observer.subscribe('/statistic', this.render);
+  observer.subscribe(this.render);
 }

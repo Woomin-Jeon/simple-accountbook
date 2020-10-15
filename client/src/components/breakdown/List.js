@@ -36,5 +36,5 @@ export default function List() {
   };
 
   this.render();
-  observer.subscribe('/breakdown', this.render);
+  observer.subscribe(this.render);
 }
