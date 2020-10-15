@@ -14,6 +14,7 @@ module.exports = {
       '@login': path.resolve(__dirname, './src/components/login/'),
       '@header': path.resolve(__dirname, './src/components/header/'),
       '@breakdown': path.resolve(__dirname, './src/components/breakdown/'),
+      '@statistic': path.resolve(__dirname, './src/components/statistic/'),
     },
   },
   module: {

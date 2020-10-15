@@ -78,3 +78,37 @@ export const getTabURL = (tabName) => {
 
   return tabURLMap[tabName];
 };
+
+export const getRadianByDegree = (degree) => (Math.PI / 180) * degree;
+
+export const splitByCategory = (breakdowns) => {
+  const categories = new Set(breakdowns.map(breakdown => breakdown.category));
+
+  const wholeCost = breakdowns
+    .map(({ amount }) => Number(amount.replace(/,|원/g, '')))
+    .reduce((acc, cur) => acc + cur, 0);
+
+  return [...categories].map(category => {
+    const matchedBreakdowns = breakdowns.filter(breakdown => breakdown.category === category);
+    const totalCost = matchedBreakdowns
+      .map(({ amount }) => Number(amount.replace(/,|원/g, '')))
+      .reduce((acc, cur) => acc + cur, 0);
+    const percentage = Number(((totalCost / wholeCost)).toFixed(4));
+
+    return { category, totalCost, percentage };
+  }).sort((a, b) => b.totalCost - a.totalCost);
+};
+
+export const getNextRGB = (index) => {
+  const rgbs = [
+    `rgb(30, 225, 225)`,
+    `rgb(30, 200, 200)`,
+    `rgb(30, 175, 175)`,
+    `rgb(30, 150, 150)`,
+    `rgb(30, 125, 150)`,
+    `rgb(30, 100, 150)`,
+    `rgb(30, 100, 175)`,
+  ];
+
+  return rgbs[index];
+};

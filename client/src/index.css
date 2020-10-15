@@ -365,3 +365,8 @@ button {
   width: 9rem;
   text-align: end;
 }
+
+.canvas {
+  display: table;
+  margin: 4rem auto;
+}
