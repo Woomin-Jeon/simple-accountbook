@@ -13,7 +13,7 @@ export default function BarChart() {
     const costByCategories = splitByCategory(outcomeBreakdowns);
 
     this.node.innerHTML = `<div id='bar_chart'></div>`;
-    const barChart = document.querySelector('#bar_chart');
+    const barChart = this.node.querySelector('#bar_chart');
 
     costByCategories.forEach((category, index) => {
       barChart.appendChild(new Bar(category, index).node);
