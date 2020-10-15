@@ -141,7 +141,6 @@ export const observer = {
   },
 
   unsubscribe(path) {
-    console.log('unsubscribe', path);
     this.renderers = this.renderers.filter(renderer => renderer.path !== path);
   },
 

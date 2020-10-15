@@ -34,5 +34,5 @@ export default function FilterCheckBox() {
   };
 
   this.render();
-  observer.subscribe('/breakdown', this.render);
+  observer.subscribe(this.render);
 }

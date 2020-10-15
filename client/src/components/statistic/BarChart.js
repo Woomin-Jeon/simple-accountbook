@@ -21,5 +21,5 @@ export default function BarChart() {
   };
 
   this.render();
-  observer.subscribe('/statistic', this.render);
+  observer.subscribe(this.render);
 }
