@@ -1,15 +1,23 @@
-import { splitByThousand, getNextRGB } from '@/util.js';
+import { splitByThousand, getNextRGB, sleep } from '@/util.js';
 
 export default function Bar({ category, percentage, totalCost }, index) {
   this.node = document.createElement('div');
   this.node.classList.add('bar');
   this.node.classList.add('space-between');
 
-  const drawBar = (canvas) => {
+  const drawBarWithAnimation = async (canvas) => {
+    const MAX_WIDTH = 500;
+    const PLUS_WIDTH = 3;
     const ctx = canvas.getContext('2d');
 
-    ctx.fillStyle = getNextRGB(index);
-    ctx.fillRect(0, 2, 500 * percentage, 8);
+    let progressingPoint = 0;
+    while (progressingPoint <= MAX_WIDTH * percentage) {
+      ctx.fillStyle = getNextRGB(index);
+      ctx.fillRect(0, 2, progressingPoint, 8);
+
+      progressingPoint += PLUS_WIDTH;
+      await sleep(10);
+    }
   };
 
   this.render = () => {
@@ -21,7 +29,7 @@ export default function Bar({ category, percentage, totalCost }, index) {
     `;
 
     const canvas = this.node.querySelector('#bar_canvas');
-    drawBar(canvas);
+    drawBarWithAnimation(canvas);
   };
 
   this.render();
