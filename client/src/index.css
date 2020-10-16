@@ -404,3 +404,22 @@ button {
 .bar_amount_text {
   text-align: end;
 }
+
+.chart_information {
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.chart_information_text {
+  margin-top: 8rem;
+  margin-left: 5rem;
+}
+
+.chart_information_text > div {
+  width: 12rem;
+}
+
+.chart_information_text > div > div {
+  margin-right: 1rem;
+}
