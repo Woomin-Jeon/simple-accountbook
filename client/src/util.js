@@ -112,3 +112,11 @@ export const getNextRGB = (index) => {
 
   return rgbs[index];
 };
+
+export const sleep = (ms) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(true);
+    }, ms);
+  });
+};
