@@ -1,4 +1,18 @@
-# javascript-w5-accountbook
+# Accountbook
+
+Vanilla JavaScript를 통해 구현한 가계부입니다. canvas를 통해 파이차트를 그려보는 도전을 해보았습니다.
+
+## Getting Start
+
+```bash
+cd server
+npm start
+
+cd ..
+
+cd client
+npm start
+```
 
 ## 데이터 베이스 설계
 
